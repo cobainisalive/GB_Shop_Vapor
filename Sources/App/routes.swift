@@ -11,4 +11,17 @@ func routes(_ app: Application) throws {
     }
 
     try app.register(collection: TodoController())
+    
+    let authController = AuthController()
+    
+    app.post("register", use: authController.register)
+    app.post("login", use: authController.login)
+    app.post("logout", use: authController.logout)
+    app.post("changeUserData", use: authController.changeUserData)
+    
+    let goodsController = GoodsController()
+    
+    app.post("getGoodsById", use: goodsController.getGoodByID)
+    app.post("getGoodsCatalog", use: goodsController.getGoodsCatalog)
+    
 }
