@@ -24,4 +24,13 @@ func routes(_ app: Application) throws {
     app.post("getGoodsById", use: goodsController.getGoodByID)
     app.post("getGoodsCatalog", use: goodsController.getGoodsCatalog)
     
+    let reviewController = ReviewController()
+    
+    app.post("addReview", use: reviewController.addReview)
+    app.post("approveReview", use: reviewController.approveReview)
+    app.post("removeReview", use: reviewController.removeReview)
+    
+// MARK: Test request
+    app.get("approveReview_test", use: reviewController.removeReview)
+    
 }
