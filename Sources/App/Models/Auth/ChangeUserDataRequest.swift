@@ -9,7 +9,7 @@ import Vapor
 
 struct ChangeUserDataRequest: Content {
     var userID: Int
-    var userName: String
+    var username: String
     var password: String
     var email: String
 }
