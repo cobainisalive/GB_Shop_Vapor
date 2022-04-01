@@ -29,6 +29,7 @@ func routes(_ app: Application) throws {
     app.post("addReview", use: reviewController.addReview)
     app.post("approveReview", use: reviewController.approveReview)
     app.post("removeReview", use: reviewController.removeReview)
+    app.post("getReviewListById", use: reviewController.getReviewListById)
     
 // MARK: Test request
     app.get("approveReview_test", use: reviewController.removeReview)

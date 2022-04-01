@@ -15,6 +15,14 @@ class ReviewController {
     private var badResponse = AuthResponse(result: 0,
                                        user_message: nil,
                                        error_message: "")
+    private var goodResponseForReviewList = ReviewListByIdResponse(result: 1,
+                                                                   reviewList: ["Хороший товар",
+                                                                                "Очень хороший товар",
+                                                                                "Ну так, средненько"],
+                                                                   error_message: nil)
+    private var badResponseForReviewList = ReviewListByIdResponse(result: 0,
+                                                                   reviewList: nil,
+                                                                   error_message: "Не удалось загрузить список отзывов")
     
     func addReview(_ req: Request) throws -> EventLoopFuture<AuthResponse> {
         
@@ -65,5 +73,15 @@ class ReviewController {
         print(body)
         
         return req.eventLoop.future(goodResponse)
+    }
+    
+    func getReviewListById(_ req: Request) throws -> EventLoopFuture<ReviewListByIdResponse> {
+        guard let body = try? req.content.decode(ReviewListByIdRequest.self) else {
+            return req.eventLoop.future(badResponseForReviewList)
+        }
+        
+        print(body)
+        
+        return req.eventLoop.future(goodResponseForReviewList)
     }
 }
