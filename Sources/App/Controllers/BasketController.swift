@@ -17,7 +17,7 @@ class BasketController {
     
     func addToBasket(_ req: Request) throws -> EventLoopFuture<AuthResponse> {
         
-        guard let body = try? req.content.decode(GoodRequest.self) else {
+        guard let body = try? req.content.decode(AddToBasketRequest.self) else {
             badResponse.error_message = "Ошибка добавления в корзину"
             return req.eventLoop.future(badResponse)
         }
@@ -29,7 +29,7 @@ class BasketController {
     
     func removeFromBasket(_ req: Request) throws -> EventLoopFuture<AuthResponse> {
         
-        guard let body = try? req.content.decode(GoodsCatalogRequest.self) else {
+        guard let body = try? req.content.decode(RemoveFromBasketRequest.self) else {
             badResponse.error_message = "Ошибка удаления из корзины"
             return req.eventLoop.future(badResponse)
         }
@@ -41,12 +41,12 @@ class BasketController {
     
     func payBasket(_ req: Request) throws -> EventLoopFuture<AuthResponse> {
         
-        guard let body = try? req.content.decode(GoodsCatalogRequest.self) else {
-            badResponse.error_message = "Ошибка оплаты"
-            return req.eventLoop.future(badResponse)
-        }
-        
-        print(body)
+//        guard let body = try? req.content.decode(GoodsCatalogRequest.self) else {
+//            badResponse.error_message = "Ошибка оплаты"
+//            return req.eventLoop.future(badResponse)
+//        }
+//
+//        print(body)
         
         goodResponse.user_message = "Оплата прошла успешно"
         return req.eventLoop.future(goodResponse)
