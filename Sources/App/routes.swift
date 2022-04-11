@@ -31,6 +31,12 @@ func routes(_ app: Application) throws {
     app.post("removeReview", use: reviewController.removeReview)
     app.post("getReviewListById", use: reviewController.getReviewListById)
     
+    let basketController = BasketController()
+    
+    app.post("addToBasket", use: basketController.addToBasket)
+    app.post("removeFromBasket", use: basketController.removeFromBasket)
+    app.post("payBasket", use: basketController.payBasket)
+    
 // MARK: Test request
     app.get("approveReview_test", use: reviewController.removeReview)
     
