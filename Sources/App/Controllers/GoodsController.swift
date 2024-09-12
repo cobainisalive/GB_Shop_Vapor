@@ -71,4 +71,5 @@ class GoodsController {
         
         return req.eventLoop.future(goodResponseForCatalog)
     }
+    
 }
